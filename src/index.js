@@ -13,14 +13,14 @@ app.listen(3000, async () => {
     console.log('Mongodb connected');
 
     const tweetRepo = new TweetRepository();
-    // const tweet = await tweetRepo.create({content: 'Tweet with comment schema'})
+    // const tweet = await tweetRepo.create({content: 'Sample tweet 6'})
     // console.log(tweet);
 
-    // const comment = await Comment.create({content: 'new comment'})
+    // const comment = await Comment.create({content: 'Comment for sample tweet 6'})
     // tweet.comments.push(comment);
     // tweet.save();
     // console.log(tweet);
 
-    const tweet = await tweetRepo.getWithComments('63e0adcdeda7f3287562d229');
-    console.log(tweet);
+    const tweet = await tweetRepo.getAll(2, 5);
+    console.log(tweet[0].contentWithEmail);
 });
