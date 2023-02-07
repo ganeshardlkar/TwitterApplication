@@ -37,5 +37,5 @@ app.listen(3000, async () => {
     // console.log(tweet);
 
     let ser = new service();
-    await ser.create({ content: 'Done with #refactor of this #code' });
+    await ser.create({ content: 'I will #CHILL today' });
 });
