@@ -1,4 +1,3 @@
-// const { TweetRepository, HashtagRepository } = require('../repository/index');
 import { TweetRepository, HashtagRepository } from '../repository/index.js';
 
 class TweetService {
@@ -21,17 +20,15 @@ class TweetService {
             return { title: tag, tweets: [tweet.id] }
         })
         await this.hashtagRepository.bulkCreate(newTags);
-        // todo create hashtags and add here
-        /*
-            1. Bulkcreate in mongoose
-            2. Filter title of hashtag based on multiple tags
-            3. How to add tweet id inside all the hashtag
-        */
-
         alreadyPresentTags.forEach((tag) => {
             tag.tweets.push(tweet.id);
             tag.save();
         })
+        return tweet;
+    }
+
+    async get(tweetId) {
+        const tweet = await this.tweetRepository.getWithComments(tweetId);
         return tweet;
     }
 }
